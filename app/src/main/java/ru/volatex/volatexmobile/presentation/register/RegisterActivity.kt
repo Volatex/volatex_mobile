@@ -19,7 +19,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: ActivityRegisterBinding
 
-    // Лог для отладки
     private val TAG = "RegisterActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080") // 10.0.2.2 — доступ к localhost из эмулятора
+            .baseUrl("http://10.0.2.2:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val api = retrofit.create(AuthApi::class.java)
@@ -51,17 +50,14 @@ class RegisterActivity : AppCompatActivity() {
 
             viewModel.registrationResult.observe(this@RegisterActivity) { result ->
                 result.onSuccess { response ->
-                    // Логируем успешный ответ
                     Log.d(TAG, "Registration successful: ${response.toString()}")
 
-                    // После успешной регистрации, переходим на экран верификации
                     val email = viewModel.email.value ?: ""
                     val intent = Intent(this@RegisterActivity, VerifyEmailActivity::class.java)
-                    intent.putExtra("email", email)  // передаем email в следующий экран
+                    intent.putExtra("email", email)
                     startActivity(intent)
-                    finish() // Закрываем RegisterActivity, чтобы пользователь не мог вернуться назад
+                    finish()
                 }.onFailure { exception ->
-                    // Логируем ошибку
                     Log.e(TAG, "Registration failed: ${exception.message}")
                     Toast.makeText(this@RegisterActivity, exception.message, Toast.LENGTH_SHORT).show()
                 }

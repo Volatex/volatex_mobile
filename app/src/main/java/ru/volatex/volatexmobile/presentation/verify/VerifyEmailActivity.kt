@@ -15,6 +15,7 @@ import ru.volatex.volatexmobile.data.remote.AuthApi
 import ru.volatex.volatexmobile.databinding.ActivityVerifyEmailBinding
 import ru.volatex.volatexmobile.domain.model.VerifyEmailRequest
 import com.google.gson.GsonBuilder
+import ru.volatex.volatexmobile.presentation.login.LoginActivity
 import kotlin.coroutines.CoroutineContext
 
 class VerifyEmailActivity : AppCompatActivity(), CoroutineScope {
@@ -34,15 +35,13 @@ class VerifyEmailActivity : AppCompatActivity(), CoroutineScope {
 
         email = intent.getStringExtra("email") ?: ""
 
-        // Создаем Gson с поддержкой ленивого парсинга
         val gson = GsonBuilder()
-            .setLenient()  // Устанавливаем lenient для более гибкого парсинга
+            .setLenient()
             .create()
 
-        // Настроим Retrofit с использованием настроенного Gson
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080/") // Убедись в baseUrl
-            .addConverterFactory(GsonConverterFactory.create(gson)) // Используем модифицированный gson
+            .baseUrl("http://10.0.2.2:8080/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         api = retrofit.create(AuthApi::class.java)
@@ -66,11 +65,10 @@ class VerifyEmailActivity : AppCompatActivity(), CoroutineScope {
                 }
 
                 if (response.isSuccessful) {
-                    // Если тело пустое, просто переходим на следующий экран
                     Toast.makeText(this@VerifyEmailActivity, "Email подтвержден!", Toast.LENGTH_SHORT).show()
-                    /*val intent = Intent(this@VerifyEmailActivity, AnotherActivity::class.java) // Переходите на нужный экран
+                    val intent = Intent(this@VerifyEmailActivity, LoginActivity::class.java)
                     startActivity(intent)
-                    finish()  // Закрываем текущий экран*/
+                    finish()
                 } else {
                     Toast.makeText(this@VerifyEmailActivity, "Ошибка: ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
