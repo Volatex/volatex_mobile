@@ -1,41 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp"
-    android:layout_marginHorizontal="4dp"
-    android:elevation="4dp"
-    android:padding="12dp">
+    android:layout_marginHorizontal="8dp"
+    android:strokeColor="@color/colorPrimary"
+    android:radius="12dp"
+    android:backgroundTint="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/figiText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FIGI"
+            android:text="FIGI: BBG000B9XRY4"
             android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:ellipsize="end"
+            android:maxLines="1" />
 
         <TextView
             android:id="@+id/buyInfoText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buy: 0 x 0" />
+            android:text="Покупка: 10 x 120.5"
+            android:textSize="14sp"
+            android:layout_marginTop="6dp" />
 
         <TextView
             android:id="@+id/sellInfoText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sell: 0 x 0" />
+            android:text="Продажа: 10 x 125.0"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp" />
 
         <TextView
             android:id="@+id/timestampText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CreatedAt" />
+            android:text="Создано: 2024-04-14 16:32"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="8dp" />
+
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

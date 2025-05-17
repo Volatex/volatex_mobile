@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         launch {
             try {
                 val response = withContext(Dispatchers.IO) {
-                    api.addStrategy("Bearer ${tokenManager.getToken()}", request)
+                    api.addStrategy("${tokenManager.getToken()}", request)
                 }
                 if (response.isSuccessful) {
                     Toast.makeText(this@MainActivity, "Добавлено", Toast.LENGTH_SHORT).show()

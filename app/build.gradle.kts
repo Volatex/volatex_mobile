@@ -57,5 +57,9 @@ dependencies {
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("com.google.android.material:material:1.11.0")
+    implementation ("ru.tinkoff.core.tinkoffauth:tid:1.1.0")
+
+
 
 }
