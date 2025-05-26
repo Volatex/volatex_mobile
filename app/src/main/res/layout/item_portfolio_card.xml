@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:radius="12dp"
+    android:elevation="4dp"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Название"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/quantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Количество"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/valueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Текущая стоимость"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/volatilityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Волатильность"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

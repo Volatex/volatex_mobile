@@ -1,13 +1,21 @@
 package ru.volatex.volatexmobile.presentation.register
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.volatex.volatexmobile.R
 import ru.volatex.volatexmobile.data.remote.AuthApi
 import ru.volatex.volatexmobile.data.repository.AuthRepositoryImpl
 import ru.volatex.volatexmobile.databinding.ActivityRegisterBinding
@@ -34,6 +42,27 @@ class RegisterActivity : AppCompatActivity() {
         val repo = AuthRepositoryImpl(api)
         val useCase = RegisterUseCase(repo)
         viewModel = RegisterViewModel(useCase)
+
+        // Внутри onCreate после binding.apply { ... }
+        val spannable = SpannableString("Уже есть аккаунт? Войти")
+        val loginClickable = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val intent = Intent(this@RegisterActivity, ru.volatex.volatexmobile.presentation.login.LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+// Делаем слово "Войти" кликабельным (индекс по тексту)
+        val loginStart = spannable.indexOf("Войти")
+        val loginEnd = loginStart + "Войти".length
+        spannable.setSpan(loginClickable, loginStart, loginEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        binding.root.findViewById<TextView>(R.id.loginTextView).apply {
+            text = spannable
+            movementMethod = LinkMovementMethod.getInstance()
+            highlightColor = Color.TRANSPARENT // убираем цвет подсветки при клике
+        }
 
         binding.apply {
             emailInput.doAfterTextChanged { viewModel.email.value = it.toString() }

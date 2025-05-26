@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/strategyList"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="24dp"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            android:padding="8dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:clipToOutline="true"
+            android:outlineProvider="background" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/figiInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Тикер"
+                android:backgroundTint="@android:color/transparent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/buyPriceInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Цена покупки за акцию"
+                android:inputType="numberDecimal"
+                android:backgroundTint="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/buyQtyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Количество покупки"
+                android:inputType="number"
+                android:backgroundTint="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sellPriceInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Цена продажи"
+                android:inputType="numberDecimal"
+                android:backgroundTint="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sellQtyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Количество продажи"
+                android:inputType="number"
+                android:backgroundTint="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Добавить стратегию"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>

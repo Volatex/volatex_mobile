@@ -15,6 +15,7 @@ import ru.volatex.volatexmobile.data.remote.AuthApi
 import ru.volatex.volatexmobile.databinding.ActivityLoginBinding
 import ru.volatex.volatexmobile.domain.model.SignInRequest
 import ru.volatex.volatexmobile.presentation.LauncherActivity
+import ru.volatex.volatexmobile.presentation.token.AddTokenActivity
 import ru.volatex.volatexmobile.utils.TokenManager
 import kotlin.coroutines.CoroutineContext
 
@@ -67,9 +68,12 @@ class LoginActivity : AppCompatActivity(), CoroutineScope {
                         tokenManager.saveToken(body.token)
                         Toast.makeText(this@LoginActivity, "Успешный вход!", Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(this@LoginActivity, LauncherActivity::class.java)
+                        // Переход на AddTokenActivity
+                        val intent = Intent(this@LoginActivity, AddTokenActivity::class.java)
                         startActivity(intent)
                         finish()
+
+                        // Если нужен переход на LauncherActivity после ввода токена — его открываем из AddTokenActivity
                     }
                 } else {
                     Toast.makeText(this@LoginActivity, "Ошибка: ${response.message()}", Toast.LENGTH_SHORT).show()
@@ -79,6 +83,7 @@ class LoginActivity : AppCompatActivity(), CoroutineScope {
             }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
